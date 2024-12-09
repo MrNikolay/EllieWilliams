@@ -1,0 +1,97 @@
+<!-- mobile-phone-resolution: 500x860 -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Подключаем Swiper к проекту для создания слайдера в блоке Portfolio -->
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
+    <title>Ellie Williams</title>
+</head>
+<body>
+    <header>
+        <img src="img/logo.jpg" alt="logo.jpg" id="header-logo">
+        <ul class="header-menu">
+            <li><a href="#">About Me</a></li>
+            <li><a href="#">Portfolio</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+    </header>
+    <div class="main">
+        <div class="main-block">
+            <h1>Ellie Williams</h1>
+            <h2>Captured Moments<br>That Last Forever</h2>
+        </div>
+    </div>
+    <div class="about-me">
+        <h1 class="title">ABOUT ME</h1>
+        <p class="description">I’m a passionate photographer who specializes in capturing authentic moments. My goal is to make every shot tell a unique story.</p>
+        <div class="about-me-block left">
+            <div class="about-me-topic">My Experience</div>
+            <p class="about-me-text">With over 5 years of experience in portrait, event, and landscape photography, I have had the pleasure of working with a diverse range of clients, from individuals to brands.</p>
+        </div>
+        <div class="about-me-block right">
+            <div class="about-me-topic">My Approach</div>
+            <p class="about-me-text">I believe that the best photographs are those that capture real, raw emotions. I focus on natural light and creating an atmosphere where the subject feels at ease.</p>
+        </div>
+    </div>
+    <div class="portfolio">
+        <h1 class="title">PORTFOLIO</h1>
+        <div class="swiper-container">
+            <div class="swiper-wrapper">
+              <div class="swiper-slide"><img src="img/photo1.png" alt="Image 1"></div>
+              <div class="swiper-slide"><img src="img/photo2.png" alt="Image 2"></div>
+              <div class="swiper-slide"><img src="img/photo3.png" alt="Image 3"></div>
+              <div class="swiper-slide"><img src="img/photo4.png" alt="Image 4"></div>
+              <div class="swiper-slide"><img src="img/photo5.png" alt="Image 5"></div>
+              <div class="swiper-slide"><img src="img/photo6.png" alt="Image 6"></div>
+              <div class="swiper-slide"><img src="img/photo7.png" alt="Image 7"></div>
+              <div class="swiper-slide"><img src="img/photo8.jpg" alt="Image 8"></div>
+            </div>
+          
+            <!-- стрелки навигации -->
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+          
+            <!-- Если хотите пагинацию -->
+            <!-- <div class="swiper-pagination"></div> -->
+          </div>
+        </div>
+    </div>
+    <div class="contact">
+        <h1 class="title">CONTACT</h1>
+        <p class="description">I am always happy to receive your questions and suggestions.</p>
+        <div class="contact-block">
+            <form class="contact-form">
+                <input type="text" id="name" name="name" placeholder="Name" required>
+                <input type="email" id="email" name="email" placeholder="Email" required>
+                <textarea id="message" name="message" placeholder="Message" required></textarea>
+                <button type="submit" class="submit-button">Отправить</button>
+            </form>
+        </div>
+
+        <script src="script.js"></script>
+        <script>
+            // Настройка слайдера Swiper
+            const swiper = new Swiper('.swiper-container', {
+                slidesPerView: 'auto',      // Автоматическое количество видимых слайдов
+                spaceBetween: 10,           // Расстояние между слайдами
+                centeredSlides: true,       // Центрирует текущий слайд
+                loop: true,                 // Включает бесконечный цикл
+                navigation: {               // Стрелки навигации
+                    nextEl: '.swiper-button-next',
+                    prevEl: '.swiper-button-prev',
+                },
+                // pagination: {               // Пагинация
+                //     el: '.swiper-pagination',
+                //     clickable: true,
+                // },
+            });
+        </script>
+</body>
+</html>

@@ -1,0 +1,279 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+* {
+    margin: 0px;  /* margin изначально ненулевой :) */
+    padding: 0px;
+}
+
+.title {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+  color: #B015ED;
+  font-size: 32px;
+  font-weight: 800;
+  font-family: "Montserrat", sans-serif;
+}
+
+.description {
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 1.4em;
+  width: 90%;
+  max-width: 585px;
+  margin: 10px auto;
+  text-align: center;
+  font-family: "Montserrat", sans-serif;
+}
+
+header {
+  background-color: #030303;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 28px;
+  height: 80px;
+}
+
+#header-logo {
+  max-width: 80px;
+}
+
+.header-menu {
+  /* background-color: aliceblue; */
+  display: flex;
+  list-style: none;
+  justify-content: center;
+  gap: 20px;
+}
+
+.header-menu a {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 600;
+  color: white;
+  text-decoration: none;
+  font-size: 20px;
+  /* font-optical-sizing: auto; */
+  /* font-style: normal; */
+}
+
+.main {
+  height: 446px;
+  background: url("img/1.jpg");
+  background-size: cover;
+}
+
+.main-block {
+  position: relative;
+  top: 225px;
+  width: 50%;
+  padding: 15px;
+  padding-left: 30px;
+  background-color: rgba(4, 4, 4, 0.75);
+}
+
+.main-block h1 {
+  color: #FFC107;
+  font-family: "Playfair Display", serif;
+  font-optical-sizing: auto;
+  font-weight: 800;
+  font-style: normal;
+}
+
+.main-block h2 {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 400;
+  color: #42A5F5;
+}
+
+
+
+.about-me {
+  font-family: "Montserrat", sans-serif;
+}
+
+.about-me-topic {
+  color: #FFC107;
+  font-weight: 700;
+  font-size: 20px;
+  margin: 0px 40px;
+}
+
+.about-me-text {
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 145%;
+  font-family: "Roboto", sans-serif;
+  margin: 0px 20px;
+}
+
+.about-me-block {
+  /* margin-top: 40px; */
+  /* width: 90%; */
+  max-width: 800px;
+  margin: 40px auto;
+}
+
+.left {
+  text-align: left;
+}
+
+.right {
+  text-align: right;
+}
+
+
+
+.portfolio {
+  background-color: #1F1F1F;
+  /* height: 800px; */
+  padding-top: 1px;
+}
+
+.swiper-container {
+  position: relative; /* Чтобы стрелки были расположены относительно контейнера */
+  width: 100%;
+  height: 100%;
+  overflow: hidden; /* Скрывает изображения за пределами контейнера */
+}
+
+.swiper-wrapper {
+  display: flex;
+}
+
+.swiper-slide {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0.7; /* Уменьшаем яркость скрытых слайдов */
+  transition: opacity 0.3s ease-in-out;
+  width: auto;
+  padding: 0; /* Убираем лишние отступы */
+}
+
+.swiper-slide img {
+  max-width: 35%;   /* Ограничиваем ширину изображения, чтобы уменьшить его */
+  max-height: 35%;  /* Ограничиваем высоту изображения */
+  object-fit: contain; /* Сохраняем пропорции */
+  transition: max-width 0.3s ease-in-out, max-height 0.3s ease-in-out;
+}
+
+.swiper-slide-active {
+  opacity: 1; /* Увеличиваем яркость активного слайда */
+}
+
+.swiper-slide-active img {
+  max-width: 60%;  /* Активное изображение будет в нормальном размере */
+  max-height: 60%; /* Активное изображение в нормальном размере */
+}
+
+.swiper-button-next, .swiper-button-prev {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #fff;
+  z-index: 10;
+}
+
+
+
+/* Стили для блока контактов */
+.contact-block {
+    width: 80%;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 30px;
+    text-align: center;
+}
+  
+/* Стили для формы */
+.contact-form input, .contact-form textarea {
+  width: 90%;
+  padding: 15px;
+  margin: 10px 0;
+  border: 2px solid #B015ED;
+  border-radius: 5px;
+  font-size: 16px;
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+  
+.contact-form input:focus, .contact-form textarea:focus {
+  border-color: #42A5F5;
+}
+  
+.contact-form textarea {
+  height: 150px;
+  resize: none;
+}
+  
+/* Кнопка отправки */
+.submit-button {
+  background-color: #B015ED;
+  color: white;
+  padding: 15px 30px;
+  border: none;
+  border-radius: 5px;
+  font-size: 18px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+  
+.submit-button:hover {
+  background-color: #FFC107;
+}
+  
+/* Анимация при отправке */
+.submit-button:active {
+  transform: scale(0.98);
+}
+
+
+
+
+
+/* ОБРАТИ ВНИМАНИЕ НА МЕНЯ!!! */
+/* .contact-header:hover {
+  transform: scale(1.1);
+} */
+/* p.s (08.12) - быть может неплохая анимация для .title */
+
+
+/* box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); */
+
+
+
+
+
+
+
+
+
+
+
+/* Точки на фоне */
+/* body {
+    background-color: #ffffff;
+    background-image: radial-gradient(circle, #000000 2px, transparent 0px);
+    background-size: 20px 20px;
+} */
+
+/* Сетка на фоне */
+/* body {
+    background-color: #ffffff;
+    background-image: linear-gradient(to right, #000000 1px, transparent 1px),
+                      linear-gradient(to bottom, #000000 1px, transparent 1px);
+    background-size: 20px 20px;
+} */
+
+/* Анимация для точек/сетки */
+/* @keyframes moveDots {
+    0% { background-position: 0 0; }
+    100% { background-position: 20px 20px; }
+}
+  
+body {
+    animation: moveDots 1s linear infinite;
+} */
