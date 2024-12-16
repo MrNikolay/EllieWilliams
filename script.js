@@ -10,7 +10,7 @@ const nextBtn = document.querySelector('button.next-btn');
 
 const sliderItems = document.getElementsByClassName('slider-item');
 
-let currentIndex = 0;  // по-умолчанию показываем фото прекрасной девушки
+let currentIndex = 5;  // по-умолчанию показываем фото прекрасной девушки
 updateSlider();
 
 function updateSlider() {
@@ -33,8 +33,14 @@ function updateSlider() {
   // выделяем текущее фото, делая его активным
   sliderItems[currentIndex].classList.add('active');
 
+  // фикс поломки слайдера при увеличении ширины экрана (больше 500 пикс.)
+  let k = 0;
+  if(window.innerWidth > 500) {
+    k = 0.5 * (window.innerWidth - 500);
+  }
+
   // делаем прокрутку к нужному изображению
-  const shiftAmount = -currentIndex * slideWidth + 120;
+  const shiftAmount = -currentIndex * slideWidth + 110 + k;
   photoSlider.style.transform = `translateX(${shiftAmount}px)`;
 }
 

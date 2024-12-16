@@ -148,12 +148,12 @@ header {
 
 .photo-slider-container {
   /* background-color: aliceblue; */
-  /* width: 100%; */
   height: 100%;
   overflow-x: hidden;  /* Скрываем элементы, выходящие за пределы слайдера */
 }
 
 .photo-slider {
+  margin-top: 40px;
   transition: transform 0.3s ease;  /* Плавная прокрутка при изменении */
   display: flex;
   /* justify-content: center; */
@@ -164,7 +164,7 @@ header {
 }
 
 .slider-item {
-  flex: 0 0 60%; /* Каждое изображение занимает 60% ширины слайдера */
+  flex: 0 0 300px; /* Каждое изображение занимает 60% ширины слайдера */
 }
 
 .slider-item img {
