@@ -59,6 +59,10 @@ header {
   /* font-style: normal; */
 }
 
+/*
+    BLOCK - MAIN PAGE
+*/
+
 .main {
   height: 446px;
   background: url("img/1.jpg");
@@ -88,6 +92,10 @@ header {
   color: #42A5F5;
 }
 
+
+/*
+    BLOCK - ABOUT ME
+*/
 
 
 .about-me {
@@ -125,59 +133,87 @@ header {
 }
 
 
+/*
+    BLOCK - PORTFOLIO
+*/
 
 .portfolio {
+  position: relative;
   background-color: #1F1F1F;
-  /* height: 800px; */
+  height: 640px;
   padding-top: 1px;
 }
 
-.swiper-container {
-  position: relative; /* Чтобы стрелки были расположены относительно контейнера */
-  width: 100%;
+/* ------- СТИЛИ ДЛЯ СЛАЙДЕРА ------- */
+
+.photo-slider-container {
+  /* background-color: aliceblue; */
+  /* width: 100%; */
   height: 100%;
-  overflow: hidden; /* Скрывает изображения за пределами контейнера */
+  overflow-x: hidden;  /* Скрываем элементы, выходящие за пределы слайдера */
 }
 
-.swiper-wrapper {
+.photo-slider {
+  transition: transform 0.3s ease;  /* Плавная прокрутка при изменении */
   display: flex;
-}
-
-.swiper-slide {
-  display: flex;
-  justify-content: center;
+  /* justify-content: center; */
   align-items: center;
-  opacity: 0.7; /* Уменьшаем яркость скрытых слайдов */
-  transition: opacity 0.3s ease-in-out;
-  width: auto;
-  padding: 0; /* Убираем лишние отступы */
+  /* width: 100%; */
+  gap: 10px;
+  /* transform: translateX(100px); */
 }
 
-.swiper-slide img {
-  max-width: 35%;   /* Ограничиваем ширину изображения, чтобы уменьшить его */
-  max-height: 35%;  /* Ограничиваем высоту изображения */
-  object-fit: contain; /* Сохраняем пропорции */
-  transition: max-width 0.3s ease-in-out, max-height 0.3s ease-in-out;
+.slider-item {
+  flex: 0 0 60%; /* Каждое изображение занимает 60% ширины слайдера */
 }
 
-.swiper-slide-active {
-  opacity: 1; /* Увеличиваем яркость активного слайда */
+.slider-item img {
+  border-radius: 20px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5); /* Добавляем падающую тень */
+  transition: transform 0.3s, opacity 0.3s;
 }
 
-.swiper-slide-active img {
-  max-width: 60%;  /* Активное изображение будет в нормальном размере */
-  max-height: 60%; /* Активное изображение в нормальном размере */
+.slider-item:not(.active) img {
+  opacity: 0.8; /* Затемнение для неактивных изображений */
+  transform: scale(0.8); /* Уменьшаем размер */
 }
 
-.swiper-button-next, .swiper-button-prev {
+.slider-item.active img {
+  opacity: 1; /* Полная яркость для текущего изображения */
+  transform: scale(1); /* Увеличиваем размер */
+}
+
+/* Кнопки управления */
+.prev-btn,
+.next-btn {
   position: absolute;
   top: 50%;
-  transform: translateY(-50%);
-  color: #fff;
+  /* transform: translateY(-50%); */
+  background: rgba(0, 0, 0, 0.5);
+  font-weight: 600;
+  color: white;
+  border: none;
+  /* border-radius: 100px; */
+  padding: 10px;
+  cursor: pointer;
   z-index: 10;
 }
 
+.prev-btn {
+  left: 20px;
+}
 
+.next-btn {
+  right: 20px;
+}
+
+/* ----------------------------------- */
+
+
+
+/*
+    BLOCK - CONTACT
+*/
 
 /* Стили для блока контактов */
 .contact-block {

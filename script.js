@@ -1,65 +1,55 @@
 /* 
-  РЕАЛИЗАЦИЯ КАРУСЕЛИ ФОТОГРАФИЙ В БЛОКЕ "PORTFOLIO"
+  РЕАЛИЗАЦИЯ КАРУСЕЛИ ФОТОГРАФИЙ (СЛАЙДЕРА) В БЛОКЕ "PORTFOLIO"
 */
-let currentIndex = 0; // Начальный индекс
-const items = document.querySelectorAll('.carousel-item');
-const carousel = document.querySelector('.carousel');
 
-// Вычисляем длину сдвига, чтобы дойти до определенного изображения
-function updateCarousel() {
-  const itemWidth = items[0].offsetWidth;
-  const offset = -currentIndex * itemWidth; // Сдвигаем на ширину одного элемента
-  carousel.style.transform = `translateX(${offset}px)`; 
+// Первоначальное объявление ссылок на элементы слайдера и инициализация переменных
+const photoSlider = document.querySelector('.photo-slider');
 
-  // Обновляем стиль для каждого изображения
-  items.forEach((item, index) => {
-    if (index === currentIndex) {
-      item.style.transform = 'scale(1.2)';
-      item.style.opacity = '1';
-    } else {
-      item.style.transform = 'scale(0.7)';
-      item.style.opacity = '0.6';
-    }
-  });
-}
+const prevBtn = document.querySelector('button.prev-btn');
+const nextBtn = document.querySelector('button.next-btn');
 
-function updateCarousel() {
-  // Смещение на основе текущего индекса
-  const offset = -currentIndex * items[0].offsetWidth; // Умножаем на ширину первого элемента
-  carousel.style.transform = `translateX(${offset})`; // Применяем сдвиг
+const sliderItems = document.getElementsByClassName('slider-item');
 
-  // Обновляем стиль для каждого изображения
-  items.forEach((item, index) => {
-    if (index === currentIndex) {
-      item.style.transform = 'scale(1.2)';
-      item.style.opacity = '1';
-    } else {
-      item.style.transform = 'scale(0.7)';
-      item.style.opacity = '0.6';
-    }
-  });
-}
+const slideWidth = document.querySelector('.slider-item').offsetWidth; // Ширина одного изображения
+
+let currentIndex = 5;  // по-умолчанию показываем фото прекрасной девушки
+updateSlider();
+
+function updateSlider() {
+  /* На основе текущего индекса фотографии делаем сдвиг слайдера влево (перемещаемся направо)
+    таким образом, чтобы достичь нужной фотографии */
   
-function moveCarousel(direction) {
-  currentIndex += direction;
-
-  // Зацикливаем индекс для переходов
+  // Зацикливание индекса (эффект бесконечной прокрутки)
   if (currentIndex < 0) {
-    currentIndex = items.length - 1; // Переходим на последнюю фотографию
-  } else if (currentIndex >= items.length) {
-    currentIndex = 0; // Переходим на первую фотографию
+      currentIndex = sliderItems.length - 1;
+  } else if (currentIndex >= sliderItems.length) {
+      currentIndex = 0;
   }
-  updateCarousel();
-}
-  
-// Инициализация карусели при загрузке страницы
-window.addEventListener('resize', updateCarousel); // Пересчёт при изменении размеров окна
-updateCarousel();
 
+  // выделяем текущее фото, делая его активным
+  sliderItems[currentIndex].classList.add('active');
+
+  // делаем прокрутку к нужному изображению
+  const shiftAmount = -currentIndex * slideWidth - 480;
+  photoSlider.style.transform = `translateX(${shiftAmount}px)`;
+}
+
+prevBtn.addEventListener('click', function() {
+  sliderItems[currentIndex].classList.remove('active');
+  currentIndex--;
+  updateSlider();
+});
+
+nextBtn.addEventListener('click', function() {
+  sliderItems[currentIndex].classList.remove('active');
+  currentIndex++;
+  updateSlider();
+});
 
 /*
   ПРОСТОЙ ОБРАБОТЧИК ОТПРАВКИ ФОРМЫ
 */
+
 document.querySelector('.contact-form').addEventListener('submit', function(event) {
   event.preventDefault();
   
