@@ -10,14 +10,18 @@ const nextBtn = document.querySelector('button.next-btn');
 
 const sliderItems = document.getElementsByClassName('slider-item');
 
-const slideWidth = document.querySelector('.slider-item').offsetWidth; // Ширина одного изображения
-
-let currentIndex = 5;  // по-умолчанию показываем фото прекрасной девушки
+let currentIndex = 0;  // по-умолчанию показываем фото прекрасной девушки
 updateSlider();
 
 function updateSlider() {
   /* На основе текущего индекса фотографии делаем сдвиг слайдера влево (перемещаемся направо)
     таким образом, чтобы достичь нужной фотографии */
+
+  // Вычисляем это значение динамически, так как размер изображения может измениться (если напр. пользователь изменит ширину окна)
+  const photoSliderStyles = window.getComputedStyle(photoSlider);
+  const slideElement = photoSlider.querySelector('.slider-item');
+  const gap = parseFloat(photoSliderStyles.gap || 0); // Получаем значение gap или 0
+  const slideWidth = slideElement.offsetWidth + gap;
   
   // Зацикливание индекса (эффект бесконечной прокрутки)
   if (currentIndex < 0) {
@@ -30,7 +34,7 @@ function updateSlider() {
   sliderItems[currentIndex].classList.add('active');
 
   // делаем прокрутку к нужному изображению
-  const shiftAmount = -currentIndex * slideWidth - 480;
+  const shiftAmount = -currentIndex * slideWidth + 120;
   photoSlider.style.transform = `translateX(${shiftAmount}px)`;
 }
 

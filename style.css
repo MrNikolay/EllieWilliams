@@ -168,6 +168,7 @@ header {
 }
 
 .slider-item img {
+  width: 100%; /* Подгоняем изображения под ширину слайда */
   border-radius: 20px;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5); /* Добавляем падающую тень */
   transition: transform 0.3s, opacity 0.3s;
