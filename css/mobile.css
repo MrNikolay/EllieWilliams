@@ -17,31 +17,13 @@
     background-color: rgba(4, 4, 4, 0.75);
 }
   
-.main-block h1 {
-    color: #FFC107;
-    font-family: "Playfair Display", serif;
-    font-optical-sizing: auto;
-    font-weight: 800;
-    font-style: normal;
-}
-  
-.main-block h2 {
-    font-family: "Montserrat", sans-serif;
-    font-weight: 400;
-    color: #42A5F5;
-}
-
-
 
 /*
     BLOCK - PORTFOLIO
 */
 
 .portfolio {
-    position: relative;
-    background-color: #1F1F1F;
     height: 640px;
-    padding-top: 1px;
   }
   
 /* ------- СТИЛИ ДЛЯ СЛАЙДЕРА ------- */

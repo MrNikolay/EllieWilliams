@@ -2,6 +2,10 @@
   РЕАЛИЗАЦИЯ КАРУСЕЛИ ФОТОГРАФИЙ (СЛАЙДЕРА) В БЛОКЕ "PORTFOLIO"
 */
 
+// У Б И Р А Е М  С Л А Й Д Е Р
+const slider = document.querySelector('.photo-slider-container');
+slider.parentNode.removeChild(slider);
+
 // Первоначальное объявление ссылок на элементы слайдера и инициализация переменных
 const photoSlider = document.querySelector('.photo-slider');
 

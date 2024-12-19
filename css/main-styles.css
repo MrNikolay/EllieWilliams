@@ -15,11 +15,12 @@
 .title {
   display: flex;
   justify-content: center;
-  margin-top: 20px;
+  margin-top: 0.5em;
   color: #B015ED;
   font-size: 32px;
   font-weight: 800;
   font-family: "Montserrat", sans-serif;
+  letter-spacing: 8px;
 }
 
 .description {
@@ -65,6 +66,25 @@ header {
 }
 
 
+/* 
+    BLOCK - MAIN
+*/
+
+.main-block h1 {
+  color: #FFC107;
+  font-family: "Playfair Display", serif;
+  font-optical-sizing: auto;
+  font-weight: 800;
+  font-style: normal;
+}
+
+.main-block h2 {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 400;
+  color: #42A5F5;
+}
+
+
 /*
     BLOCK - ABOUT ME
 */
@@ -104,6 +124,17 @@ header {
   text-align: right;
 }
 
+
+/*
+    BLOCK - PORTFOLIO
+*/
+
+
+.portfolio {
+  position: relative;
+  background-color: #1F1F1F;
+  padding-top: 1px;
+}
 
 
 /*
