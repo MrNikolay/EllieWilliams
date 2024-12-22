@@ -79,6 +79,10 @@
         display: grid;
     }
 
+    .ad-promo {
+        height: 22vw;
+        max-height: 400px;
+    }
 
     /* 
         (--------------------------)
@@ -145,6 +149,17 @@
     
     .about-me-block.right {
         margin-left: 35%;
+    }
+
+    /* 
+        (--------------------------)
+        |      БЛОК PORTFOLIO      |
+        (--------------------------)
+    */
+
+    .ad-promo {
+        font-size: 120%;
+        max-width: 400px;
     }
 }
 
