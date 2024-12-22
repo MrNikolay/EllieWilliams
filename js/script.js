@@ -76,3 +76,69 @@ document.querySelector('.contact-form').addEventListener('submit', function(even
     alert('Please fill in all fields of the form.');
   }
 });
+
+
+/*
+  Логика для открытия изображений на весь экран по нажатию на них
+  (only desktop)
+*/
+
+currentItem = null;  // Текущее активное изображение (по-умолчанию null)
+
+function handleImageClick(item) {
+  // Обработчик нажатия на изображение
+  if (item.classList.contains('active')) {
+    item.classList.remove('active');
+    item.nextElementSibling.remove();
+    return;
+  }
+
+  // Делаем изображение активным
+  currentItem = item;
+  item.classList.add('active');
+
+  // Добавляем заглушку
+  item.insertAdjacentHTML('afterend', '<div class="portfolio-item"></div>');
+
+  // Начинаем следить за прокручиванием страницы (scroll)
+  scrollCounter = 0;
+  window.addEventListener('scroll', handleScroll);
+};
+
+function handleScroll() {
+  /* Обработчик скроллинга сайта. 
+  Делает изображение неактивным, если оно заходит за пределы видимой области */
+  const rect = currentItem.querySelector('img').getBoundingClientRect();
+  const windowHeight = window.innerHeight || document.documentElement.clientHeight;
+
+  // Проверка, находится ли элемент в видимой области
+  const isVisible =
+    rect.top < windowHeight && // верхняя часть элемента не выходит за верхний край
+    rect.bottom > windowHeight / 2 // нижняя часть элемента больше половины окна
+
+  // Делаем текущую выбранную фотографию неактивной (если она заходит за края видимой области)
+  if (!isVisible) {
+    if (currentItem != null) {
+      // имитируем клик по изображению, чтобы его закрыть
+      handleImageClick(currentItem);
+    }
+  
+    // Перестаём следить за прокручиванием страницы (оптимизация)
+    window.removeEventListener('scroll', handleScroll);
+  }
+}
+
+// Получаем все изображения внутри .portfolio-container-desktop
+const portfolioContainer = document.querySelector('.portfolio-container-desktop');
+const portfolioItems = portfolioContainer.getElementsByClassName('portfolio-item');
+
+// Добавляем свой обработчик события для каждого изображения
+for (let i = 0; i < portfolioItems.length; i++) {
+  const item = portfolioItems[i];
+  const image = item.querySelector('img');
+  if (image != null) {
+    image.addEventListener('click', () => {
+      handleImageClick(item);
+    });
+  }
+}
