@@ -1,4 +1,4 @@
-
+/* 
 .title {
     font-size: 48px;
 }
@@ -6,13 +6,13 @@
 .description {
     font-size: 22px;
     max-width: 800px;
-}
+} */
 
 /*
     BLOCK - MAIN PAGE
 */
 
-.main {
+/* .main {
     display: grid;
     grid-template-columns: 5fr 4fr;
 }
@@ -33,7 +33,7 @@
     margin-left: 25%;
     font-weight: 300;
     line-height: 130%;
-}
+} */
 
 
 /*
@@ -41,16 +41,20 @@
 */
 
 
-.portfolio {
+/* .portfolio {
     height: 800px;
 }
+
+.portfolio-container-desktop {
+    display: none;
+} */
 
 
 /*
     BLOCK - ABOUT ME
 */
 
-.about-me-block {
+/* .about-me-block {
     max-width: 47%;
     margin: 60px auto;
 }
@@ -70,7 +74,7 @@
 .about-me-text {
     margin-top: 10px;
     font-size: 22px;
-}
+} */
 
 /* МЕДИА-ЗАПРОСЫ ДЛЯ УЛУЧШЕНИЯ АДАПТИВНОСТИ ТЕКСТА */
 @media screen and (max-width: 1400px) {
@@ -104,4 +108,8 @@
         font-size: 24px;
         margin-left: 25%;
     }
+}
+
+.photo-slider-container {
+    display: none;
 }

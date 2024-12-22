@@ -1,6 +1,6 @@
 /*
-  main-styles.css - Общие стили как для мобильной версии, так и для пк-версии.
-    Эти стили должны использоваться всегда.
+  style.css содержит основные стили проекта. По-умолчанию применены стили для мобильной версии. 
+  Однако через media-запросы мы изменяем контент и стили страницы для отображения разных версий для mobile и pc.
 */
 
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
@@ -8,7 +8,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
 
 * {
-    margin: 0px;  /* margin изначально ненулевой :) */
+    margin: 0px;
     padding: 0px;
 }
 
@@ -17,15 +17,15 @@
   justify-content: center;
   margin-top: 0.5em;
   color: #B015ED;
-  font-size: 32px;
+  font-size: 28px;
   font-weight: 800;
   font-family: "Montserrat", sans-serif;
-  letter-spacing: 8px;
+  letter-spacing: 4px;
 }
 
 .description {
   font-weight: 600;
-  font-size: 18px;
+  font-size: 16px;
   line-height: 1.4em;
   width: 90%;
   max-width: 585px;
@@ -69,6 +69,26 @@ header {
 /* 
     BLOCK - MAIN
 */
+
+.main {
+  height: 446px;
+  background: url("../img/1.jpg");
+  background-size: cover;
+}
+
+/* Фотография для ПК */
+.main-desktop-photo {
+  display: none;
+}
+
+.main-block {
+  position: relative;
+  top: 225px;
+  width: 50%;
+  padding: 15px;
+  padding-left: 30px;
+  background-color: rgba(4, 4, 4, 0.75);
+}
 
 .main-block h1 {
   color: #FFC107;
@@ -134,6 +154,71 @@ header {
   position: relative;
   background-color: #1F1F1F;
   padding-top: 1px;
+  height: 640px;
+}
+
+/* ------- СТИЛИ ДЛЯ СЛАЙДЕРА ------- */
+
+.photo-slider-container {
+  /* background-color: aliceblue; */
+  height: 100%;
+  overflow-x: hidden;  /* Скрываем элементы, выходящие за пределы слайдера */
+}
+
+.photo-slider {
+  margin-top: 40px;
+  transition: transform 0.3s ease;  /* Плавная прокрутка при изменении */
+  display: flex;
+  /* justify-content: center; */
+  align-items: center;
+  /* width: 100%; */
+  gap: 10px;
+  /* transform: translateX(100px); */
+}
+
+.slider-item {
+  flex: 0 0 300px; /* Каждое изображение занимает 60% ширины слайдера */
+}
+
+.slider-item img {
+  width: 100%; /* Подгоняем изображения под ширину слайда */
+  border-radius: 20px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5); /* Добавляем падающую тень */
+  transition: transform 0.3s, opacity 0.3s;
+}
+
+.slider-item:not(.active) img {
+  opacity: 0.8; /* Затемнение для неактивных изображений */
+  transform: scale(0.8); /* Уменьшаем размер */
+}
+
+.slider-item.active img {
+  opacity: 1; /* Полная яркость для текущего изображения */
+  transform: scale(1); /* Увеличиваем размер */
+}
+
+/* Кнопки управления */
+.prev-btn,
+.next-btn {
+  position: absolute;
+  top: 50%;
+  /* transform: translateY(-50%); */
+  background: rgba(0, 0, 0, 0.5);
+  font-weight: 600;
+  color: white;
+  border: none;
+  /* border-radius: 100px; */
+  padding: 10px;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.prev-btn {
+  left: 20px;
+}
+
+.next-btn {
+  right: 20px;
 }
 
 
