@@ -174,4 +174,18 @@
         margin-top: 10px;
         font-size: 22px;
     }
+
+    /* 
+        (--------------------------)
+        |      БЛОК PORTFOLIO      |
+        (--------------------------)
+    */
+
+    .ad-promo {
+        font-size: 150%;
+    }
+
+    .portfolio-container-desktop {
+        gap: 0px;
+      }
 }

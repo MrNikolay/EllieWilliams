@@ -154,7 +154,6 @@ header {
   position: relative;
   background-color: #1F1F1F;
   padding-top: 1px;
-  /* width: 1300px; */
   min-height: 640px;
 }
 
@@ -163,12 +162,19 @@ header {
 .portfolio-container-desktop {
   display: none;
   grid-template-columns: repeat(3, 1fr);
-  /* gap: 25px; */
+  gap: 30px;
   padding: 50px;
 }
 
+.portfolio-item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .portfolio-container-desktop img {
-  height: 80%;
+  width: 100%;
+  max-width: 350px;
   border-radius: 20px;
   margin: 0px auto;
 }
@@ -179,7 +185,8 @@ header {
   border: #B015ED 2px solid;
   border-radius: 20px;
   font-family: "Montserrat", sans-serif;
-  font-size: 32px;
+  font-size: 110%;
+  font-weight: 700;
   justify-content: center;
   align-items: center;
   text-align: center;
