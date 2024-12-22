@@ -154,7 +154,37 @@ header {
   position: relative;
   background-color: #1F1F1F;
   padding-top: 1px;
-  height: 640px;
+  /* width: 1300px; */
+  min-height: 640px;
+}
+
+/* ------- СТИЛИ ДЛЯ ДОСКИ ИЗОБРАЖЕНИЙ ------- */
+
+.portfolio-container-desktop {
+  display: none;
+  grid-template-columns: repeat(3, 1fr);
+  /* gap: 25px; */
+  padding: 50px;
+}
+
+.portfolio-container-desktop img {
+  height: 80%;
+  border-radius: 20px;
+  margin: 0px auto;
+}
+
+.ad-promo {
+  display: flex;
+  margin: 0px auto;
+  border: #B015ED 2px solid;
+  border-radius: 20px;
+  font-family: "Montserrat", sans-serif;
+  font-size: 32px;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: white;
+  width: 70%;
 }
 
 /* ------- СТИЛИ ДЛЯ СЛАЙДЕРА ------- */
@@ -220,7 +250,6 @@ header {
 .next-btn {
   right: 20px;
 }
-
 
 /*
     BLOCK - CONTACT

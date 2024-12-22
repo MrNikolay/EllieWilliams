@@ -70,16 +70,13 @@
     /* 
         Убираем слайдер и добавляем статические фотографии
     */
-    .portfolio {
-        height: 800px;
-    }
 
     .photo-slider-container {
         display: none;
     }
 
     .portfolio-container-desktop {
-        display: block;
+        display: grid;
     }
 
 
@@ -110,6 +107,8 @@
         font-size: 18px;
     }
 }
+
+
 
 @media screen and (min-width: 1200px) {
     /* 
@@ -146,5 +145,33 @@
     
     .about-me-block.right {
         margin-left: 35%;
+    }
+}
+
+
+
+@media screen and (min-width: 1600px) {
+    .title {
+        margin-top: 30px;
+        font-size: 38px;
+    }
+
+    .description {
+        font-size: 22px;
+    }
+
+    /* 
+        (--------------------------)
+        |      БЛОК ABOUT-ME       |
+        (--------------------------)
+    */
+
+    .about-me-topic {
+        font-size: 34px;
+    }
+    
+    .about-me-text {
+        margin-top: 10px;
+        font-size: 22px;
     }
 }
