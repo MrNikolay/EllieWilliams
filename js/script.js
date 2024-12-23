@@ -85,8 +85,8 @@ document.querySelector('.contact-form').addEventListener('submit', function(even
 
 currentItem = null;  // Текущее активное изображение (по-умолчанию null)
 
+// Обработчик нажатия на изображение
 function handleImageClick(item) {
-  // Обработчик нажатия на изображение
   if (item.classList.contains('active')) {
     item.classList.remove('active');
     item.nextElementSibling.remove();
@@ -100,9 +100,18 @@ function handleImageClick(item) {
   // Добавляем заглушку
   item.insertAdjacentHTML('afterend', '<div class="portfolio-item"></div>');
 
-  // Начинаем следить за прокручиванием страницы (scroll)
-  scrollCounter = 0;
-  window.addEventListener('scroll', handleScroll);
+  item.scrollIntoView({
+    behavior: 'smooth', // Плавная прокрутка
+    block: 'center',    // Центрирование по вертикали
+    inline: 'nearest'   // Без горизонтального сдвига
+  });
+
+  // Ждём 1 секунду и начинаем следить за прокручиванием страницы
+  setTimeout(() => {
+    // Начинаем следить за прокручиванием страницы (scroll)
+    scrollCounter = 0;
+    window.addEventListener('scroll', handleScroll);
+  }, 1000);
 };
 
 function handleScroll() {
@@ -118,7 +127,7 @@ function handleScroll() {
 
   // Делаем текущую выбранную фотографию неактивной (если она заходит за края видимой области)
   if (!isVisible) {
-    if (currentItem != null) {
+    if (currentItem != null && currentItem.classList.contains('active')) {
       // имитируем клик по изображению, чтобы его закрыть
       handleImageClick(currentItem);
     }
