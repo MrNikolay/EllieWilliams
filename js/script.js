@@ -117,13 +117,18 @@ function handleImageClick(item) {
 function handleScroll() {
   /* Обработчик скроллинга сайта. 
   Делает изображение неактивным, если оно заходит за пределы видимой области */
-  const rect = currentItem.querySelector('img').getBoundingClientRect();
+  const image = currentItem.querySelector('img');
+  const imgHeight = image.height;
+  const rect = image.getBoundingClientRect();
   const windowHeight = window.innerHeight || document.documentElement.clientHeight;
 
-  // Проверка, находится ли элемент в видимой области
+  // console.log(`top: ${rect.top}, bottom: ${rect.bottom}`);
+
+  // console.log(`top >= ${-imgHeight - 80}`);
+
   const isVisible =
-    rect.top < windowHeight && // верхняя часть элемента не выходит за верхний край
-    rect.bottom > windowHeight / 2 // нижняя часть элемента больше половины окна
+    rect.top >= -imgHeight - document.querySelector('header').clientHeight && // не выходит за верхний край
+    rect.top <= windowHeight // не выходит за нижний край
 
   // Делаем текущую выбранную фотографию неактивной (если она заходит за края видимой области)
   if (!isVisible) {
@@ -157,7 +162,7 @@ for (let i = 0; i < portfolioItems.length; i++) {
       СТРАНИЦЫ ЧЕРЕЗ ТРИГГЕРЫ
 */
 
-function listenerHandler2() {
+function scrollHandler2() {
   const leftText = document.querySelector('.about-me-block.left');
   const rightText = document.querySelector('.about-me-block.right');
 
@@ -177,11 +182,11 @@ function listenerHandler2() {
   }
 
   if (leftTextTrigger && rightTextTrigger) {
-    document.removeEventListener('scroll', listenerHandler2);
+    document.removeEventListener('scroll', scrollHandler2);
   }
 }
 
-document.addEventListener('scroll', listenerHandler2);
+document.addEventListener('scroll', scrollHandler2);
 
 /* Отключаем автоматическое восстановление прокрутки
     (при обновлении страницы мы всегда будем видеть верхнюю часть */
