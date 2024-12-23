@@ -79,8 +79,8 @@ document.querySelector('.contact-form').addEventListener('submit', function(even
 
 
 /*
-  Логика для открытия изображений на весь экран по нажатию на них
-  (only desktop)
+  ЛОГИКА ОТКРЫТИЯ ФОТО-КАРТОЧЕК НА ВЕСЬ ЭКРАН ПО НАЖАТИЮ НА НИХ
+    (ТОЛЬКО DESKTOP)
 */
 
 currentItem = null;  // Текущее активное изображение (по-умолчанию null)
@@ -141,4 +141,41 @@ for (let i = 0; i < portfolioItems.length; i++) {
       handleImageClick(item);
     });
   }
+}
+
+/*
+    ПЛАВНОЕ ПОЯВЛЕНИЕ ТЕКСТА В ABOUT-ME ПО МЕРЕ ПРОКРУТКИ
+      СТРАНИЦЫ ЧЕРЕЗ ТРИГГЕРЫ
+*/
+
+function listenerHandler2() {
+  const leftText = document.querySelector('.about-me-block.left');
+  const rightText = document.querySelector('.about-me-block.right');
+
+  // Определяем точки появления
+  const leftTextTrigger = leftText.getBoundingClientRect().top < window.innerHeight * 0.8;
+  const rightTextTrigger = leftText.classList.contains('visible') && 
+                           rightText.getBoundingClientRect().top < window.innerHeight * 0.8;
+
+  // Запускаем анимацию для левого текста
+  if (leftTextTrigger && !(leftText.classList.contains('visible'))) {
+    leftText.classList.add('visible');
+  }
+
+  // Запускаем анимацию для правого текста только после появления левого
+  if (rightTextTrigger && !(rightText.classList.contains('visible'))) {
+    rightText.classList.add('visible');
+  }
+
+  if (leftTextTrigger && rightTextTrigger) {
+    document.removeEventListener('scroll', listenerHandler2);
+  }
+}
+
+document.addEventListener('scroll', listenerHandler2);
+
+/* Отключаем автоматическое восстановление прокрутки
+    (при обновлении страницы мы всегда будем видеть верхнюю часть */
+if ('scrollRestoration' in history) {
+  history.scrollRestoration = 'manual';
 }

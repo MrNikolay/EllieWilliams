@@ -17,6 +17,21 @@
 
     /* 
         (--------------------------)
+        |        БЛОК HEADER         |
+        (--------------------------)
+    */
+
+    #header-logo {
+        position: relative;
+        right: 2vw;
+    }
+
+    .header-menu {
+        gap: 4vw;
+    }
+
+    /* 
+        (--------------------------)
         |        БЛОК MAIN         |
         (--------------------------)
     */
@@ -44,21 +59,69 @@
         top: 0px;
     }
 
+    /* Делаем текст прозрачным по-умолчанию */
+    .main-block * {
+        opacity: 0;
+    }
+
     /* 
         Подстраиваем шрифты в main-block
     */
 
     .main-block h1 {
+        animation: slideIn 1s ease-out forwards;
         font-size: 5vw;
         margin-top: 22%;
         margin-left: 30%;
     }
     
     .main-block h2 {
+        animation: fadeIn 1s ease-out forwards;
+        animation-delay: 1.5s; /* Задержка появления после текста 1 */
         font-size: 3vw;
         margin-left: 25%;
         font-weight: 300;
         line-height: 130%;
+    }
+
+    /* 
+        (--------------------------)
+        |      БЛОК ABOUT-ME       |
+        (--------------------------)
+    */
+
+    .about-me {
+        height: 600px;
+    }
+
+    .about-me-block {
+        opacity: 0;
+        transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+
+    .about-me-block.left {
+        margin-top: 50px;
+        transform: translateX(-50px);
+    }
+
+    .about-me-block.right {
+        margin-top: 80px;
+        transform: translateX(50px);
+    }
+
+    /* Анимация появления */
+    .about-me-block.visible {
+        opacity: 1;
+        transform: translateX(0);
+    }
+    
+    .about-me-topic {
+        font-size: 28px;
+    }
+    
+    .about-me-text {
+        margin-top: 10px;
+        font-size: 18px;
     }
 
     /* 
@@ -82,33 +145,6 @@
     .ad-promo {
         height: 22vw;
         max-height: 400px;
-    }
-
-    /* 
-        (--------------------------)
-        |      БЛОК ABOUT-ME       |
-        (--------------------------)
-    */
-
-    .about-me {
-        height: 600px;
-    }
-
-    .about-me-block.left {
-        margin-top: 50px;
-    }
-
-    .about-me-block.right {
-        margin-top: 80px;
-    }
-    
-    .about-me-topic {
-        font-size: 28px;
-    }
-    
-    .about-me-text {
-        margin-top: 10px;
-        font-size: 18px;
     }
 }
 
