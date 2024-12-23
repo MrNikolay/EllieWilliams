@@ -18,14 +18,20 @@ html {
 
 .title {
   user-select: none;
-  display: flex;
-  justify-content: center;
+  max-width: 700px;
+  text-align: center;
+  margin: 0px auto;
   margin-top: 0.5em;
   color: #B015ED;
   font-size: 28px;
   font-weight: 800;
   font-family: "Montserrat", sans-serif;
   letter-spacing: 4px;
+  transition: transform 0.1s ease-in;
+}
+
+.title:hover {
+  transform: scale(1.1);
 }
 
 .description {
