@@ -89,7 +89,8 @@ currentItem = null;  // Текущее активное изображение (
 function handleImageClick(item) {
   if (item.classList.contains('active')) {
     item.classList.remove('active');
-    item.nextElementSibling.remove();
+    item.nextElementSibling.remove();  // убираем "заглушку"
+    currentItem = null;
     return;
   }
 
@@ -100,43 +101,28 @@ function handleImageClick(item) {
   // Добавляем заглушку
   item.insertAdjacentHTML('afterend', '<div class="portfolio-item"></div>');
 
-  item.scrollIntoView({
-    behavior: 'smooth', // Плавная прокрутка
-    block: 'center',    // Центрирование по вертикали
-    inline: 'nearest'   // Без горизонтального сдвига
-  });
+  scrollCounter = 0;
+  window.addEventListener('scroll', handleScroll);
 
-  // Ждём 1 секунду и начинаем следить за прокручиванием страницы
-  setTimeout(() => {
-    // Начинаем следить за прокручиванием страницы (scroll)
-    scrollCounter = 0;
-    window.addEventListener('scroll', handleScroll);
-  }, 1000);
+  // Начинаем следить за скроллингом
+  // setTimeout(() => {
+  //   window.addEventListener('scroll', handleScroll);
+  // }, 500);
 };
 
+
+scrollCounter = 0;  // счётчик нужен, чтобы допустить пользователю определённое кол-во скроллов
 function handleScroll() {
-  /* Обработчик скроллинга сайта. 
-  Делает изображение неактивным, если оно заходит за пределы видимой области */
-  const image = currentItem.querySelector('img');
-  const imgHeight = image.height;
-  const rect = image.getBoundingClientRect();
-  const windowHeight = window.innerHeight || document.documentElement.clientHeight;
+  /* Обработчик события scroll для window
+      Его задача - закрыть активное изображение в момент прокрутки страницы пользователем */
+  scrollCounter++;
 
-  // console.log(`top: ${rect.top}, bottom: ${rect.bottom}`);
-
-  // console.log(`top >= ${-imgHeight - 80}`);
-
-  const isVisible =
-    rect.top >= -imgHeight - document.querySelector('header').clientHeight && // не выходит за верхний край
-    rect.top <= windowHeight // не выходит за нижний край
-
-  // Делаем текущую выбранную фотографию неактивной (если она заходит за края видимой области)
-  if (!isVisible) {
-    if (currentItem != null && currentItem.classList.contains('active')) {
+  if (scrollCounter >= 42) {
+    if(currentItem && currentItem.classList.contains('active')) {
       // имитируем клик по изображению, чтобы его закрыть
       handleImageClick(currentItem);
     }
-  
+
     // Перестаём следить за прокручиванием страницы (оптимизация)
     window.removeEventListener('scroll', handleScroll);
   }
