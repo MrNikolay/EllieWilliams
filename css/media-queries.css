@@ -143,6 +143,7 @@
     }
 
     .ad-promo {
+        width: 70%;
         height: 22vw;
         max-height: 400px;
     }
@@ -197,46 +198,4 @@
         font-size: 120%;
         max-width: 400px;
     }
-}
-
-
-
-@media screen and (min-width: 1600px) {
-    .title {
-        margin-top: 30px;
-        font-size: 38px;
-    }
-
-    .description {
-        font-size: 22px;
-    }
-
-    /* 
-        (--------------------------)
-        |      БЛОК ABOUT-ME       |
-        (--------------------------)
-    */
-
-    .about-me-topic {
-        font-size: 34px;
-    }
-    
-    .about-me-text {
-        margin-top: 10px;
-        font-size: 22px;
-    }
-
-    /* 
-        (--------------------------)
-        |      БЛОК PORTFOLIO      |
-        (--------------------------)
-    */
-
-    .ad-promo {
-        font-size: 150%;
-    }
-
-    .portfolio-container-desktop {
-        gap: 0px;
-      }
 }

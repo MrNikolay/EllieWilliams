@@ -231,15 +231,19 @@ header {
 
 /* Баннер - "Здесь бы хорошо смотрелось ваше фото" */
 .ad-promo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
   margin: 0px auto;
   border: #B015ED 2px solid;
   border-radius: 20px;
   font-family: "Montserrat", sans-serif;
   font-size: 100%;
   font-weight: 700;
-  text-align: center;
   color: white;
-  width: 70%;
+  width: 90%;
+  height: 180px;
   transition: transform 0.5s ease;
 }
 
