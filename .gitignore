@@ -1,0 +1,7 @@
+# Игнорировать всё
+*
+
+# Исключения
+!/wp-content/
+!.gitignore
+!README.md
