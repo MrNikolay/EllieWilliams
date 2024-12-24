@@ -1,3 +1,44 @@
+/* Отключаем автоматическое восстановление прокрутки
+    (при обновлении страницы мы всегда будем видеть верхнюю часть */
+if ('scrollRestoration' in history) {
+  history.scrollRestoration = 'manual';
+}
+
+
+/*
+    ПЛАВНОЕ ПОЯВЛЕНИЕ ТЕКСТА В ABOUT-ME ПО МЕРЕ ПРОКРУТКИ
+      СТРАНИЦЫ ЧЕРЕЗ ТРИГГЕРЫ
+*/
+
+function scrollHandler2() {
+  const blocks = document.querySelectorAll('.about-me-block'); // Все блоки
+  let allVisible = true;
+
+  blocks.forEach((block, index) => {
+    const isVisible = block.classList.contains('visible');
+    const trigger = block.getBoundingClientRect().top < window.innerHeight * 0.8;
+
+    // Если блок еще не виден и он в зоне видимости
+    if (trigger && !isVisible) {
+      block.classList.add('visible');
+    }
+
+    // Если хотя бы один блок не виден, продолжаем слушать scroll
+    if (!block.classList.contains('visible')) {
+      allVisible = false;
+    }
+  });
+
+  // Если все блоки видны, убираем обработчик прокрутки
+  if (allVisible) {
+    document.removeEventListener('scroll', scrollHandler);
+  }
+}
+
+document.addEventListener('scroll', scrollHandler2);
+
+
+
 /* 
   РЕАЛИЗАЦИЯ КАРУСЕЛИ ФОТОГРАФИЙ (СЛАЙДЕРА) В БЛОКЕ "PORTFOLIO"
 */
@@ -56,26 +97,7 @@ nextBtn.addEventListener('click', function() {
   updateSlider();
 });
 
-/*
-  ПРОСТОЙ ОБРАБОТЧИК ОТПРАВКИ ФОРМЫ
-*/
 
-document.querySelector('.contact-form').addEventListener('submit', function(event) {
-  event.preventDefault();
-  
-  // Получаем значения полей
-  const name = document.getElementById('name').value;
-  const email = document.getElementById('email').value;
-  const message = document.getElementById('message').value;
-  
-  // Простейшая проверка на заполнение полей
-  if (name && email && message) {
-    alert('Thank you for your message! I will contact you shortly.');
-    document.querySelector('.contact-form').reset(); // Очищаем форму
-  } else {
-    alert('Please fill in all fields of the form.');
-  }
-});
 
 
 /*
@@ -143,39 +165,26 @@ for (let i = 0; i < portfolioItems.length; i++) {
   }
 }
 
+
+
+
 /*
-    ПЛАВНОЕ ПОЯВЛЕНИЕ ТЕКСТА В ABOUT-ME ПО МЕРЕ ПРОКРУТКИ
-      СТРАНИЦЫ ЧЕРЕЗ ТРИГГЕРЫ
+  ПРОСТОЙ ОБРАБОТЧИК ОТПРАВКИ ФОРМЫ
 */
 
-function scrollHandler2() {
-  const leftText = document.querySelector('.about-me-block.left');
-  const rightText = document.querySelector('.about-me-block.right');
-
-  // Определяем точки появления
-  const leftTextTrigger = leftText.getBoundingClientRect().top < window.innerHeight * 0.8;
-  const rightTextTrigger = leftText.classList.contains('visible') && 
-                           rightText.getBoundingClientRect().top < window.innerHeight * 0.8;
-
-  // Запускаем анимацию для левого текста
-  if (leftTextTrigger && !(leftText.classList.contains('visible'))) {
-    leftText.classList.add('visible');
+document.querySelector('.contact-form').addEventListener('submit', function(event) {
+  event.preventDefault();
+  
+  // Получаем значения полей
+  const name = document.getElementById('name').value;
+  const email = document.getElementById('email').value;
+  const message = document.getElementById('message').value;
+  
+  // Простейшая проверка на заполнение полей
+  if (name && email && message) {
+    alert('Thank you for your message! I will contact you shortly.');
+    document.querySelector('.contact-form').reset(); // Очищаем форму
+  } else {
+    alert('Please fill in all fields of the form.');
   }
-
-  // Запускаем анимацию для правого текста только после появления левого
-  if (rightTextTrigger && !(rightText.classList.contains('visible'))) {
-    rightText.classList.add('visible');
-  }
-
-  if (leftTextTrigger && rightTextTrigger) {
-    document.removeEventListener('scroll', scrollHandler2);
-  }
-}
-
-document.addEventListener('scroll', scrollHandler2);
-
-/* Отключаем автоматическое восстановление прокрутки
-    (при обновлении страницы мы всегда будем видеть верхнюю часть */
-if ('scrollRestoration' in history) {
-  history.scrollRestoration = 'manual';
-}
+});

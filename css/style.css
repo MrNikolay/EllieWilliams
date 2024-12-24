@@ -340,6 +340,7 @@ header {
   font-size: 16px;
   outline: none;
   transition: border-color 0.3s ease;
+  font-family: "Roboto", sans-serif;
 }
   
 .contact-form input:focus, .contact-form textarea:focus {
@@ -371,25 +372,6 @@ header {
 .submit-button:active {
   transform: scale(0.98);
 }
-
-
-
-
-
-/* ОБРАТИ ВНИМАНИЕ НА МЕНЯ!!! */
-/* .contact-header:hover {
-  transform: scale(1.1);
-} */
-/* p.s (08.12) - быть может неплохая анимация для .title */
-
-
-/* box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); */
-
-
-
-
-
-
 
 
 

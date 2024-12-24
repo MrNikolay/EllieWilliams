@@ -91,7 +91,7 @@
     */
 
     .about-me {
-        height: 600px;
+        min-height: 600px;
     }
 
     .about-me-block {
