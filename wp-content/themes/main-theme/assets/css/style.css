@@ -61,7 +61,8 @@ header {
 }
 
 #header-logo {
-  max-width: 80px;
+  width: 80px;
+  height: 80px;
 }
 
 .header-menu {

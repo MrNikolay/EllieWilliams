@@ -23,8 +23,10 @@
     <?php wp_head(); ?>
 </head>
 <body>
+    <!-- По хорошему бы вынести этот блок в header.php, но на данном сайте всего одна страница.
+        Поэтому я поместил всю разметку в один файл index.php -->
     <header>
-        <a href="#main-link"><img src="img/logo2.jpg" alt="logo2.jpg" id="header-logo"></a>
+        <?php the_custom_logo(); ?>  <!-- <a href="#main-link"><img src="logo.png" id="header-logo"></a> -->
         <ul class="header-menu">
             <li><a href="#about-link">About Me</a></li>
             <li><a href="#portfolio-link">Portfolio</a></li>
