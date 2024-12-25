@@ -4,7 +4,7 @@
  <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
+    <!-- <meta charset="UTF-8"> -->
 
     <!-- 25.12 я тут час провозился, пытаясь понять, почему медиа-запросы работают некорректно.
         Оказывается vscode добавляет этот метатег не просто так. Он сообщает браузеру подстроить
@@ -41,7 +41,7 @@
                 <h1>Ellie Williams</h1>
                 <h2>Captured Moments<br>That Last Forever</h2>
             </div>
-            <img src="img/1.jpg" alt="" width="100%" class="main-desktop-photo">
+            <img src="<?=get_template_directory_uri();?>/assets/img/1.jpg" width="100%" class="main-desktop-photo">
         </div>
     </section>
 
