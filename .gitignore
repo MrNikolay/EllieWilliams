@@ -1,7 +1,9 @@
 # Игнорировать всё
 *
 
-# Исключения
-!/wp-content/
 !.gitignore
 !README.md
+
+# Исключить каталог wp-content и его содержимое
+!/wp-content/
+!/wp-content/**

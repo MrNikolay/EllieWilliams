@@ -1,0 +1,11 @@
+/*
+Theme Name: main-theme
+Theme URI: https://github.com/MrNikolay/EllieWilliams
+Author: Nikolay M.
+Author URI: https://github.com/MrNikolay
+Description: Основная тема для моего учебного проекта по WordPress - Ellie Williams.
+Version: 1.0
+*/
+
+/* Здесь могут находиться стили для страницы. Но чтобы они применились, файл
+    style.css нужно зарегистрировать через wp_enqueue_style() в functions.php */
