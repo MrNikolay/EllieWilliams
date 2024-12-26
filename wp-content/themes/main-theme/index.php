@@ -15,7 +15,7 @@
          Не совершай моих ошибок, используй этот метатег! -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title><?php echo esc_html(get_theme_mod('custom_page_title', 'Ellie Williams')); ?></title>
+    <?php echo esc_html(get_theme_mod('custom_page_title', 'Ellie Williams')); ?>
 
     <!-- wp_head() и wp_footer() должны обязательно присутствовать в каждой теме. Иначе многие функции WordPress не будут работать 
      (в том числе, например, не будет отображаться полезная админская шапка, а также многие плагины могут работать некорректно). 
@@ -43,8 +43,8 @@
     <span id="main-link" class="offset-link-fix"></span>
     <div class="main">
         <div class="main-block">
-            <h1>Ellie Williams</h1>
-            <h2>Captured Moments<br>That Last Forever</h2>
+            <h1><?php echo get_theme_mod('custom_main_title', 'Ellie Williams'); ?></h1>
+            <h2><?php echo get_theme_mod('custom_main_description', 'Captured Moments <br> That Last Forever'); ?></h2>
         </div>
         <img src="<?=get_template_directory_uri();?>/assets/img/1.jpg" width="100%" class="main-desktop-photo">
     </div>
@@ -55,8 +55,7 @@
     <span id="about-link" class="offset-link-fix"></span>
     <div class="about-me">
         <h1 class="title">ABOUT ME</h1>
-        <p class="description">I’m a passionate photographer who specializes in capturing authentic moments. My goal
-            is to make every shot tell a unique story.</p>
+        <p class="description"><?php echo get_theme_mod('custom_about_description', 'I’m a passionate photographer who specializes in capturing authentic moments. My goal is to make every shot tell a unique story.'); ?></p>
         <div class="about-me-block left">
             <div class="about-me-topic">My Experience</div>
             <p class="about-me-text">With over 5 years of experience in portrait, event, and landscape photography,
@@ -142,7 +141,7 @@
     <span id="contact-link"></span>
     <div class="contact">
         <h1 class="title">CONTACT</h1>
-        <p class="description">I am always happy to receive your questions and suggestions.</p>
+        <p class="description"><?php echo get_theme_mod('custom_contact_description', 'I am always happy to receive your questions and suggestions.'); ?></p>
         <div class="contact-block">
             <form class="contact-form">
                 <input type="text" id="name" name="name" placeholder="Name" required>

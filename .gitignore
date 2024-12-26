@@ -4,6 +4,9 @@
 !.gitignore
 !README.md
 
-# Исключить каталог wp-content и его содержимое
+# Включить каталог wp-content и его содержимое
 !/wp-content/
 !/wp-content/**
+
+# Исключить папку plugins
+/wp-content/plugins/*
