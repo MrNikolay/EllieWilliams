@@ -16,6 +16,12 @@ html {
   scroll-behavior: smooth;  /* плавная прокрутка */
 }
 
+/* Исправляем проблему, когда шапка перекрывает часть блока, к которому мы перемещаемся через якорную ссылку */
+.offset-link-fix {
+  position: relative;
+  top: -160px;
+}
+
 .title {
   user-select: none;
   max-width: 700px;
