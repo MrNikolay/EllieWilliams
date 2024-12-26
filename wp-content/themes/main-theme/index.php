@@ -15,7 +15,7 @@
          Не совершай моих ошибок, используй этот метатег! -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Ellie Williams</title>
+    <title><?php echo esc_html(get_theme_mod('custom_page_title', 'Ellie Williams')); ?></title>
 
     <!-- wp_head() и wp_footer() должны обязательно присутствовать в каждой теме. Иначе многие функции WordPress не будут работать 
      (в том числе, например, не будет отображаться полезная админская шапка, а также многие плагины могут работать некорректно). 
@@ -87,25 +87,25 @@
             <div class="photo-slider">
                 <!-- Слайдер, в котором будут находиться изображения -->
                 <div class="slider-item">
-                    <img src="img/photo1.png" alt="Image 1">
+                    <img src="<?=get_template_directory_uri();?>/assets/img/photo1.png" alt="Image 1">
                 </div>
                 <div class="slider-item">
-                    <img src="img/photo2.png" alt="Image 2">
+                    <img src="<?=get_template_directory_uri();?>/assets/img/photo2.png" alt="Image 2">
                 </div>
                 <div class="slider-item">
-                    <img src="img/photo3.png" alt="Image 3">
+                    <img src="<?=get_template_directory_uri();?>/assets/img/photo3.png" alt="Image 3">
                 </div>
                 <div class="slider-item">
-                    <img src="img/photo4.png" alt="Image 4">
+                    <img src="<?=get_template_directory_uri();?>/assets/img/photo4.png" alt="Image 4">
                 </div>
                 <div class="slider-item">
-                    <img src="img/photo5.png" alt="Image 5">
+                    <img src="<?=get_template_directory_uri();?>/assets/img/photo5.png" alt="Image 5">
                 </div>
                 <div class="slider-item">
-                    <img src="img/photo6.png" alt="Image 6">
+                    <img src="<?=get_template_directory_uri();?>/assets/img/photo6.png" alt="Image 6">
                 </div>
                 <div class="slider-item">
-                    <img src="img/photo7.png" alt="Image 7">
+                    <img src="<?=get_template_directory_uri();?>/assets/img/photo7.png" alt="Image 7">
                 </div>
                 <div class="slider-item">
                     <div class="ad-promo">
@@ -113,25 +113,23 @@
                     </div>
                 </div>
                 <div class="slider-item">
-                    <img src="img/photo8.png" alt="Image 8">
+                    <img src="<?=get_template_directory_uri();?>/assets/img/photo8.png" alt="Image 8">
                 </div>
             </div>
-            <button class="prev-btn">
-                << /button>
-                    <!-- Кнопка для предыдущего изображения -->
-                    <button class="next-btn">></button> <!-- Кнопка для следующего изображения -->
+            <button class="prev-btn"><</button>  <!-- Кнопка для предыдущего изображения -->
+            <button class="next-btn">></button> <!-- Кнопка для следующего изображения -->
         </div>
 
         <!-- Доска изображений для десктопа -->
         <div class="portfolio-container-desktop">
-            <div class="portfolio-item"><img src="img/photo1.png" alt="Image 1"></div>
-            <div class="portfolio-item"><img src="img/photo2.png" alt="Image 2"></div>
-            <div class="portfolio-item"><img src="img/photo3.png" alt="Image 3"></div>
-            <div class="portfolio-item"><img src="img/photo4.png" alt="Image 4"></div>
-            <div class="portfolio-item"><img src="img/photo5.png" alt="Image 5"></div>
-            <div class="portfolio-item"><img src="img/photo6.png" alt="Image 6"></div>
-            <div class="portfolio-item"><img src="img/photo7.png" alt="Image 7"></div>
-            <div class="portfolio-item"><img src="img/photo8.png" alt="Image 8"></div>
+            <div class="portfolio-item"><img src="<?=get_template_directory_uri();?>/assets/img/photo1.png" alt="Image 1"></div>
+            <div class="portfolio-item"><img src="<?=get_template_directory_uri();?>/assets/img/photo2.png" alt="Image 2"></div>
+            <div class="portfolio-item"><img src="<?=get_template_directory_uri();?>/assets/img/photo3.png" alt="Image 3"></div>
+            <div class="portfolio-item"><img src="<?=get_template_directory_uri();?>/assets/img/photo4.png" alt="Image 4"></div>
+            <div class="portfolio-item"><img src="<?=get_template_directory_uri();?>/assets/img/photo5.png" alt="Image 5"></div>
+            <div class="portfolio-item"><img src="<?=get_template_directory_uri();?>/assets/img/photo6.png" alt="Image 6"></div>
+            <div class="portfolio-item"><img src="<?=get_template_directory_uri();?>/assets/img/photo7.png" alt="Image 7"></div>
+            <div class="portfolio-item"><img src="<?=get_template_directory_uri();?>/assets/img/photo8.png" alt="Image 8"></div>
             <div class="ad-promo portfolio-item">
                 Your photo<br>would look great here.
             </div>
