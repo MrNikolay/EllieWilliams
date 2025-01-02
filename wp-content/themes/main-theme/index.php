@@ -30,11 +30,13 @@
     <header>
         <?php the_custom_logo(); ?>
         <!-- <a href="#main-link"><img src="logo.png" id="header-logo"></a> -->
-        <ul class="header-menu">
-            <li><a href="#about-link">About Me</a></li>
-            <li><a href="#portfolio-link">Portfolio</a></li>
-            <li><a href="#contact-link">Contact</a></li>
-        </ul>
+        <nav>
+            <ul class="header-menu">
+                <li><a href="#about-link">About Me</a></li>
+                <li><a href="#portfolio-link">Portfolio</a></li>
+                <li><a href="#contact-link">Contact</a></li>
+            </ul>
+        </nav>
     </header>
 
     <!-- 
@@ -57,7 +59,8 @@
         <h1 class="title">ABOUT ME</h1>
         <p class="description"><?php echo get_theme_mod('custom_about_description', 'I’m a passionate photographer who specializes in capturing authentic moments. My goal is to make every shot tell a unique story.'); ?></p>
         <div class="about-me-block left">
-            <div class="about-me-topic">My Experience</div>
+        <!-- My Experience -->
+            <div class="about-me-topic"><?php get_field('about-topic', 33); ?></div>
             <p class="about-me-text">With over 5 years of experience in portrait, event, and landscape photography,
                 I have had the pleasure of working with a diverse range of clients, from individuals to brands.</p>
         </div>
