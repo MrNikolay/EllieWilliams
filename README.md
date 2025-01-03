@@ -1,6 +1,7 @@
 **Ellie Williams**
 
 Ссылка на видео обзор сайта: https://www.youtube.com/watch?v=8kRzkXmS1Ag&t=3s
+Также вы можете посмотреть, как работает кастомизация на сайте (изменение секций "About Me" и "Portfolio"): https://youtu.be/yQiYbt1-qkY
 
 Это мой первый учебный проект по веб-разработке на WordPress.
 Он представляет из себя адаптивный сайт - портфолио вымышленного фотографа Ellie Williams.
