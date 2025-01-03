@@ -58,22 +58,20 @@
     <div class="about-me">
         <h1 class="title">ABOUT ME</h1>
         <p class="description"><?php echo get_theme_mod('custom_about_description', 'I’m a passionate photographer who specializes in capturing authentic moments. My goal is to make every shot tell a unique story.'); ?></p>
-        <div class="about-me-block left">
-        <!-- My Experience -->
-            <div class="about-me-topic"><?php get_field('about-topic', 33); ?></div>
-            <p class="about-me-text">With over 5 years of experience in portrait, event, and landscape photography,
-                I have had the pleasure of working with a diverse range of clients, from individuals to brands.</p>
-        </div>
-        <div class="about-me-block right">
-            <div class="about-me-topic">My Approach</div>
-            <p class="about-me-text">I believe that the best photographs are those that capture real, raw emotions.
-                I focus on natural light and creating an atmosphere where the subject feels at ease.</p>
-        </div>
-        <div class="about-me-block left">
-            <div class="about-me-topic">Equipment</div>
-            <p class="about-me-text">I work with a professional Sony Alpha camera and prefer to use lenses that are
-                ideal for portrait photography to capture the smallest details.</p>
-        </div>
+        <?php 
+            $page_id = get_the_ID();
+            $repeater_data = get_post_meta($page_id, 'custom_repeater', true);
+            if (! empty($repeater_data)) {
+                foreach ( $repeater_data as $item ) {
+                    echo '<div class="about-me-block ' . $item['orientation_field'] . '">';
+                    echo '<div class="about-me-topic">' . $item['topic_field'] . '</div>';
+                    echo '<p class="about-me-text">' . $item['description_field'] . '</p>';
+                    echo '</div>';
+                }
+            } else {
+                echo '<h3 style="text-align: center; margin-top:50px;">Данных для отображения нет</h3>';
+            }
+        ?>
     </div>
 
     <!-- 

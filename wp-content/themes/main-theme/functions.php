@@ -1,11 +1,13 @@
 <?php
     // этот блок инициализируется после вызова wp_head()
 
-    add_action('wp_enqueue_scripts', 'add_scripts_and_styles');  // подключание скриптов и стилей
-    add_action('customize_register', 'mytheme_customize_register');  // Функция конфиг. WP-Customizer
-    
-    add_theme_support('custom-logo');  // добавляем возможность менять логотип
-    add_filter('get_custom_logo', 'custom_logo_with_id_and_link'); # Фильтр для подставления кастомных значений в HTML, который возвращает функция get_custom_logo()
+    /* 
+       ------------------------------------------
+       ( Динамически подключаем стили и скрипты )
+       ------------------------------------------
+    */
+
+    add_action('wp_enqueue_scripts', 'add_scripts_and_styles');  // регистрируем функцию, которая будет ответственна за подключение скриптов и стилей
 
     /* Здесь мы динамически подключаем стили и скрипты */
     function add_scripts_and_styles() {
@@ -20,6 +22,15 @@
         wp_enqueue_style('animations', get_template_directory_uri() . '/assets/css/animations.css');
     }
 
+    /* 
+       ---------------------------
+       ( Настраиваем Custom Logo )
+       ---------------------------
+    */
+
+    add_theme_support('custom-logo');  // добавляем возможность менять логотип
+    add_filter('get_custom_logo', 'custom_logo_with_id_and_link'); # Фильтр для подставления кастомных значений в HTML, который возвращает функция get_custom_logo()
+
     /* Фильтр для custom_logo, чтобы определить ссылку и id */
     function custom_logo_with_id_and_link($html) {
         $custom_id = 'header-logo';
@@ -32,10 +43,13 @@
         return $html;  // 
     }
     
-    /* ------------------------------------
+    /* 
+       ------------------------------------
        ( Настраиваем WordPress Customizer )
        ------------------------------------
     */
+
+    add_action('customize_register', 'mytheme_customize_register');  // функция, ответственная за настройку WordPress Customizer
 
     function mytheme_customize_register($wp_customize) {
         // Добавление секции "Custom Settings"
@@ -105,14 +119,59 @@
         ));
     }
 
-    /*
-        ФУНКЦИИ ОЧИСТКИ ДАННЫХ ДЛЯ CUSTOMIZER
-    */
-
     /* Функция очистки для кастомного поля custom_main_description */
     function sanitize_br_tags_only( $input ) {
         return wp_kses( $input, array(
             'br' => array() // Разрешаем только <br> теги
         ));
+    }
+
+    /* 
+       ------------------------------------------------
+       ( Настраиваем плагин CMB2 для функции Repeater )
+       ------------------------------------------------
+    */
+
+    add_action( 'cmb2_admin_init', 'register_repeater_metabox' );
+
+    function register_repeater_metabox() {
+        $cmb = new_cmb2_box( array(
+            'id'           => 'repeater_metabox',
+            'title'        => 'Повторитель',
+            'object_types' => array('page'),
+        ) );
+
+        $group_field_id = $cmb->add_field(array(
+            'id'          => 'custom_repeater',
+            'type'        => 'group',
+            'description' => 'Добавьте несколько элементов',
+            'options'     => array(
+                'group_title'   => 'Элемент {#}', // Название для каждого повторяющегося элемента
+                'add_button'    => 'Добавить элемент',
+                'remove_button' => 'Удалить элемент',
+                'sortable'      => true, // Возможность менять порядок элементов
+            ),
+        ));
+
+        // Поля внутри повторителя
+        $cmb->add_group_field( $group_field_id, array(
+            'name' => 'Topic',
+            'id'   => 'topic_field',
+            'type' => 'text',
+        ) );
+
+        $cmb->add_group_field( $group_field_id, array(
+            'name' => 'Description',
+            'id'   => 'description_field',
+            'type' => 'textarea_small',
+        ) );
+
+        $cmb->add_group_field( $group_field_id, array(
+            'name' => 'Orientation (left or right)',
+            'id'   => 'orientation_field',
+            'type' => 'textarea_small',
+        ) );
+
+        // Также есть типы: textarea, text_url, text_email, text_date, text_time, colorpicker, file, image и др.
     }
 ?>
