@@ -132,19 +132,20 @@
        ------------------------------------------------
     */
 
-    add_action( 'cmb2_admin_init', 'register_repeater_metabox' );
+    add_action( 'cmb2_admin_init', 'register_repeater_for_about_me');
+    add_action( 'cmb2_admin_init', 'register_repeater_for_portfolio');
 
-    function register_repeater_metabox() {
+    function register_repeater_for_about_me() {
         $cmb = new_cmb2_box( array(
-            'id'           => 'repeater_metabox',
-            'title'        => 'Повторитель',
+            'id'           => 'about_me_repeater',  // Возможно, стоит выбрать другой ID?
+            'title'        => 'Редактировать содержимое About Me  (repeater)',
             'object_types' => array('page'),
         ) );
 
         $group_field_id = $cmb->add_field(array(
-            'id'          => 'custom_repeater',
+            'id'          => 'about_me_repeater',
             'type'        => 'group',
-            'description' => 'Добавьте несколько элементов',
+            'description' => 'Укажите содержимое карточек в разделе "Обо Мне"',
             'options'     => array(
                 'group_title'   => 'Элемент {#}', // Название для каждого повторяющегося элемента
                 'add_button'    => 'Добавить элемент',
@@ -155,23 +156,62 @@
 
         // Поля внутри повторителя
         $cmb->add_group_field( $group_field_id, array(
-            'name' => 'Topic',
-            'id'   => 'topic_field',
+            'name' => 'Заголовок',
+            'id'   => 'topic',
             'type' => 'text',
         ) );
 
         $cmb->add_group_field( $group_field_id, array(
-            'name' => 'Description',
-            'id'   => 'description_field',
+            'name' => 'Описание',
+            'id'   => 'description',
             'type' => 'textarea_small',
         ) );
 
         $cmb->add_group_field( $group_field_id, array(
-            'name' => 'Orientation (left or right)',
-            'id'   => 'orientation_field',
+            'name' => 'Ориентация (left or right)',
+            'id'   => 'orientation',
             'type' => 'textarea_small',
         ) );
 
         // Также есть типы: textarea, text_url, text_email, text_date, text_time, colorpicker, file, image и др.
+    }
+
+
+    function register_repeater_for_portfolio() {
+        $cmb = new_cmb2_box( array(
+            'id'           => 'portfolio_repeater',  // Возможно, стоит выбрать другой ID?
+            'title'        => 'Редактировать содержимое Portfolio  (repeater)',
+            'object_types' => array('page'),
+        ) );
+
+        $group_field_id = $cmb->add_field(array(
+            'id'          => 'portfolio_repeater',
+            'type'        => 'group',
+            'description' => 'Укажите показываемые изображения в разделе "Portfolio"',
+            'options'     => array(
+                'group_title'   => 'Фотография {#}', // Название для каждого повторяющегося элемента
+                'add_button'    => 'Добавить фотографию',
+                'remove_button' => 'Удалить фотографию',
+                'sortable'      => true, // Возможность менять порядок элементов
+            ),
+        ));
+
+        $cmb->add_group_field( $group_field_id, array(
+            'name' => 'Описание (что изображено на фотографии?)',
+            'id'   => 'description',
+            'type' => 'text',
+        ) );
+
+        $cmb->add_group_field( $group_field_id, array(
+            'name' => 'Загрузите изображение',
+            'id'   => 'src',
+            'type' => 'file',
+            'options' => array(
+                'url' => false, // Отключить текстовое поле для ссылки
+            ),
+            'text' => array(
+                'add_upload_file_text' => 'Загрузить изображение',
+            ),
+        ) );
     }
 ?>

@@ -60,14 +60,15 @@
         <p class="description"><?php echo get_theme_mod('custom_about_description', 'I’m a passionate photographer who specializes in capturing authentic moments. My goal is to make every shot tell a unique story.'); ?></p>
         <?php 
             $page_id = get_the_ID();
-            $repeater_data = get_post_meta($page_id, 'custom_repeater', true);
-            if (! empty($repeater_data)) {
+            $repeater_data = get_post_meta($page_id, 'about_me_repeater', true);
+            if (! empty($repeater_data) ) {
                 foreach ( $repeater_data as $item ) {
-                    echo '<div class="about-me-block ' . $item['orientation_field'] . '">';
-                    echo '<div class="about-me-topic">' . $item['topic_field'] . '</div>';
-                    echo '<p class="about-me-text">' . $item['description_field'] . '</p>';
+                    echo '<div class="about-me-block ' . $item['orientation'] . '">';
+                    echo '<div class="about-me-topic">' . $item['topic'] . '</div>';
+                    echo '<p class="about-me-text">' . $item['description'] . '</p>';
                     echo '</div>';
                 }
+
             } else {
                 echo '<h3 style="text-align: center; margin-top:50px;">Данных для отображения нет</h3>';
             }
@@ -77,59 +78,53 @@
     <!-- 
         BLOCK - PORTFOLIO
     -->
+    <?php 
+        $repeater_data = get_post_meta($page_id, 'portfolio_repeater', true);
+    ?>
     <span id="portfolio-link" class="offset-link-fix"></span>
     <div class="portfolio">
         <h1 class="title">PORTFOLIO</h1>
-
+        
         <!-- Слайдер изображений для мобилки -->
         <div class="photo-slider-container">
             <!-- Контейнер для слайдера, скрывающий изображения, выходящие за пределы -->
             <div class="photo-slider">
                 <!-- Слайдер, в котором будут находиться изображения -->
-                <div class="slider-item">
-                    <img src="<?=get_template_directory_uri();?>/assets/img/photo1.png" alt="Image 1">
-                </div>
-                <div class="slider-item">
-                    <img src="<?=get_template_directory_uri();?>/assets/img/photo2.png" alt="Image 2">
-                </div>
-                <div class="slider-item">
-                    <img src="<?=get_template_directory_uri();?>/assets/img/photo3.png" alt="Image 3">
-                </div>
-                <div class="slider-item">
-                    <img src="<?=get_template_directory_uri();?>/assets/img/photo4.png" alt="Image 4">
-                </div>
-                <div class="slider-item">
-                    <img src="<?=get_template_directory_uri();?>/assets/img/photo5.png" alt="Image 5">
-                </div>
-                <div class="slider-item">
-                    <img src="<?=get_template_directory_uri();?>/assets/img/photo6.png" alt="Image 6">
-                </div>
-                <div class="slider-item">
-                    <img src="<?=get_template_directory_uri();?>/assets/img/photo7.png" alt="Image 7">
-                </div>
-                <div class="slider-item">
+                 <?php 
+                    if (! empty($repeater_data)) {
+                        foreach ( $repeater_data as $image ) {
+                            echo '<div class="slider-item">';
+                            echo '<img src="' . $image['src'] .'" alt="' . $image['description'] .'">';
+                            echo '</div>';
+                        }
+                    }
+                 ?>
+
+                 <!-- Рекламный баннер в конце слайдера -->
+                 <div class="slider-item">
                     <div class="ad-promo">
                         Your photo<br>would look great here.
                     </div>
                 </div>
-                <div class="slider-item">
-                    <img src="<?=get_template_directory_uri();?>/assets/img/photo8.png" alt="Image 8">
-                </div>
             </div>
+           
             <button class="prev-btn"><</button>  <!-- Кнопка для предыдущего изображения -->
             <button class="next-btn">></button> <!-- Кнопка для следующего изображения -->
         </div>
 
         <!-- Доска изображений для десктопа -->
         <div class="portfolio-container-desktop">
-            <div class="portfolio-item"><img src="<?=get_template_directory_uri();?>/assets/img/photo1.png" alt="Image 1"></div>
-            <div class="portfolio-item"><img src="<?=get_template_directory_uri();?>/assets/img/photo2.png" alt="Image 2"></div>
-            <div class="portfolio-item"><img src="<?=get_template_directory_uri();?>/assets/img/photo3.png" alt="Image 3"></div>
-            <div class="portfolio-item"><img src="<?=get_template_directory_uri();?>/assets/img/photo4.png" alt="Image 4"></div>
-            <div class="portfolio-item"><img src="<?=get_template_directory_uri();?>/assets/img/photo5.png" alt="Image 5"></div>
-            <div class="portfolio-item"><img src="<?=get_template_directory_uri();?>/assets/img/photo6.png" alt="Image 6"></div>
-            <div class="portfolio-item"><img src="<?=get_template_directory_uri();?>/assets/img/photo7.png" alt="Image 7"></div>
-            <div class="portfolio-item"><img src="<?=get_template_directory_uri();?>/assets/img/photo8.png" alt="Image 8"></div>
+            <?php 
+                if (! empty($repeater_data)) {
+                    foreach ( $repeater_data as $image ) {
+                        echo '<div class="portfolio-item">';
+                        echo '<img src="' . $image['src'] .'" alt="' . $image['description'] .'">';
+                        echo '</div>';
+                    }
+                }
+            ?>
+
+            <!-- Рекламный баннер в конце галереи -->
             <div class="ad-promo portfolio-item">
                 Your photo<br>would look great here.
             </div>

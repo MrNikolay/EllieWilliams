@@ -3,6 +3,7 @@
 
 !.gitignore
 !README.md
+!backup.txt
 
 # Включить каталог wp-content и его содержимое
 !/wp-content/
